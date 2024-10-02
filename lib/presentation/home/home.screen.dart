@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:site_galleria/infrastructure/navigation/routes.dart';
 import 'package:site_galleria/presentation/widgets/ellipse_painter.dart';
+import '../widgets/animated_ellipse.dart';
 import 'controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
@@ -28,7 +29,27 @@ class HomeScreen extends GetView<HomeController> {
               },
             ),
             EllipseBorderWidget(
-                color: Colors.blue, filled: false, a: -700, b: 900)
+              color: Colors.blue,
+              filled: false,
+              a: -700,
+              b: 900,
+            ),
+            Positioned(
+              top: 400,
+              left: 0,
+              child: ClipRect(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  widthFactor: 0.5,
+                  child: AnimatedEllipseBorderWidget(
+                    color: Colors.blue,
+                    filled: false,
+                    a: 700,
+                    b: 900,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
