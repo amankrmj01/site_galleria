@@ -28,27 +28,26 @@ class HomeScreen extends GetView<HomeController> {
                 );
               },
             ),
-            EllipseBorderWidget(
-              color: Colors.blue,
-              filled: false,
-              a: -700,
-              b: 900,
-            ),
-            Positioned(
-              top: 400,
-              left: 0,
-              child: ClipRect(
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  widthFactor: 0.5,
-                  child: AnimatedEllipseBorderWidget(
-                    color: Colors.blue,
-                    filled: false,
-                    a: 700,
-                    b: 900,
+            AnimatedBuilder(
+              animation: controller.topPosition,
+              builder: (context, child) {
+                return Positioned(
+                  top: controller.startAnimation(40),
+                  left: 0,
+                  child: const ClipRect(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      widthFactor: 0.3,
+                      child: AnimatedEllipseBorderWidget(
+                        color: Colors.blue,
+                        filled: false,
+                        a: 600,
+                        b: 900,
+                      ),
+                    ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ],
         ),
