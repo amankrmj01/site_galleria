@@ -5,12 +5,14 @@ class EllipsePainter extends CustomPainter {
   final bool filled;
   final double a;
   final double b;
+  final double borderWidth;
 
   EllipsePainter({
     required this.color,
     required this.filled,
     required this.a,
     required this.b,
+    this.borderWidth = 4.0,
   });
 
   @override
@@ -18,10 +20,17 @@ class EllipsePainter extends CustomPainter {
     final paint = Paint()
       ..color = color
       ..style = filled ? PaintingStyle.fill : PaintingStyle.stroke
-      ..strokeWidth = 4.0;
+      ..strokeWidth = borderWidth;
 
-    final rect = Rect.fromLTWH(0, 0, a, b);
-    canvas.drawOval(rect, paint);
+    // Adjusted rect to fit stroke width
+    final adjustedRect = Rect.fromLTWH(
+      paint.strokeWidth / 2, // Adjust for left side stroke width
+      paint.strokeWidth / 2, // Adjust for top side stroke width
+      a - paint.strokeWidth, // Subtract stroke width from width
+      b - paint.strokeWidth, // Subtract stroke width from height
+    );
+
+    canvas.drawOval(adjustedRect, paint);
   }
 
   @override
@@ -35,12 +44,14 @@ class EllipseBorderWidget extends StatelessWidget {
   final bool filled;
   final double a;
   final double b;
+  final double borderWidth;
 
-  EllipseBorderWidget({
+  const EllipseBorderWidget({
     required this.color,
     required this.filled,
     required this.a,
     required this.b,
+    required this.borderWidth,
   });
 
   @override
@@ -52,6 +63,7 @@ class EllipseBorderWidget extends StatelessWidget {
         filled: filled,
         a: a,
         b: b,
+        borderWidth: borderWidth,
       ),
     );
   }

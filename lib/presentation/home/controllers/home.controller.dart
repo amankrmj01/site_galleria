@@ -7,25 +7,35 @@ class HomeController extends GetxController
   final items = <List<dynamic>>[].obs;
   late AnimationController animationController;
   late Animation<double> topPosition;
+  late Animation<double> leftPosition;
 
   @override
   void onInit() {
     super.onInit();
     items.addAll(listPages);
     animationController = AnimationController(
-      duration: const Duration(seconds: 2),
+      duration: const Duration(milliseconds: 2000),
       vsync: this,
     );
-
     topPosition =
-        Tween<double>(begin: 0, end: 400).animate(animationController);
+        Tween<double>(begin: 0, end: 300).animate(animationController);
+    leftPosition =
+        Tween<double>(begin: 0, end: 300).animate(animationController);
+    animationController.forward();
   }
 
-  startAnimation(double endValue) {
-    topPosition =
-        Tween<double>(begin: 400, end: endValue).animate(animationController);
+  startTopAnimation(double startValue, double endValue) {
+    topPosition = Tween<double>(begin: startValue, end: endValue)
+        .animate(animationController);
     animationController.forward();
     return topPosition.value;
+  }
+
+  startLeftAnimation(double startLeft, double endLeft) {
+    leftPosition = Tween<double>(begin: startLeft, end: endLeft)
+        .animate(animationController);
+    animationController.forward();
+    return leftPosition.value;
   }
 
   @override

@@ -1,7 +1,27 @@
 const List<List<dynamic>> listPages = [
-  ['Business', 0, 'Business Page'],
-  ['Careers', 1, 'Careers Page'],
-  ['Marriage', 2, 'Marriage Page'],
-  ['Family', 3, 'Family Page'],
-  ['Health', 4, 'Health Page'],
+  [
+    'Business',
+    0,
+    'assets/images/business.png',
+  ],
+  [
+    'Careers',
+    1,
+    'assets/images/careers.png',
+  ],
+  [
+    'Marriage',
+    2,
+    'assets/images/marriage.png',
+  ],
+  [
+    'Family',
+    3,
+    'assets/images/family.png',
+  ],
+  [
+    'Health',
+    4,
+    'assets/images/health.png',
+  ],
 ];
