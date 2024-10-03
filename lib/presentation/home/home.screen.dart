@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:site_galleria/infrastructure/navigation/routes.dart';
 import 'package:site_galleria/presentation/widgets/ellipse_painter.dart';
 import 'package:velocity_x/velocity_x.dart';
-import '../widgets/animated_ellipse.dart';
 import 'controllers/home.controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
